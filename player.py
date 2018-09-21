@@ -41,7 +41,12 @@ class Player:
         # at least 2 adjacent cards in correct order constitute a fragment
 
         # count correctly seqeunced cards  
+
+        if None in o:
+            return(None)
+
         for i, n in enumerate(o):
+
             if n == o[-1]:
                 if n == o[i - 1] + 1: s+=1
             elif i == 0:

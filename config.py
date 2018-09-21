@@ -54,6 +54,8 @@ sounds = {
     }
 }
 
+time_limit = 120.0
+
 class Round:
 
     def __init__(self, num, type, variation):
@@ -80,7 +82,7 @@ bgs = {
     'green': utils.scaler(os.path.join(img_dir, 'bg.png'), display_size)
 }
 
-gameDisplay = pg.display.set_mode(display_size, pg.FULLSCREEN) # makes window
+gameDisplay = pg.display.set_mode(display_size) # makes window
 
 clock = pg.time.Clock() # game clocks
 
