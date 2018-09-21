@@ -85,7 +85,12 @@ class S(Scene):
                 else:
                     self.order.append(None)
 
-        self.sm.game.state = state
+        print(self.sm.round)
+        print(rounds[-1].num - 1)
+        if (self.sm.round == (rounds[-1].num - 1)):
+            self.sm.game.state = "GAMEOVER"
+        else:
+            self.sm.game.state = state
 
         row = []
         for key, val in self.commit(self.sm.game.player).items():
@@ -132,10 +137,4 @@ class S(Scene):
                 if card.space and card.space.type == 'target': i+=1
                 else: i=0
                 
-            if i == 6: # MAKES ADVANCING POSSIBLE ONLY WHEN 6 CARDS HAVE BEEN PLACES
-                if self.sm.round == len(rounds):
-                    print('indeed, this is the last round!')
-                    self.end('GAMEOVER')
-
-                else:
-                    self.end('FINISHED')
+            self.end('FINISHED')

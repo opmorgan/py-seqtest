@@ -24,8 +24,8 @@ class Game:
         self.pg = pg
         self.started = True
         self.sm = SM(self, EM())
-        for scene in scenes:
-            self.sm.add_scene(scene)
+        # for scene in scenes:
+        #    self.sm.add_scene(scene)
 
 
     def player_create(self, name):

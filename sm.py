@@ -22,6 +22,7 @@ class SM:
                 if base == name:
                     SCENE = __import__('scenery.'+ base, fromlist=['S'])
                     self.scenes.append(SCENE.S(name, self, em))
+                    print(self.scenes)
 
 
     def start_scene(self, info):
@@ -41,7 +42,6 @@ class SM:
         pass
 
     def timer(self, func):
-        print('peen')
         timer = Timer(10, func(), ())
         time.start()
 
@@ -71,9 +71,13 @@ class SM:
 
 
     def change_scene(self):
-        print(self.game.state)
+        print(self.scenes);
+        print(self.game.state, self.next_scene)
         if self.game.state == 'ROUND':
             self.current_scene = self.previous_scene
+            self.start_scene(rounds[self.round])
+        elif self.game.state == 'GAMEOVER':
+            self.current_scene = self.scenes[-1]
             self.start_scene(rounds[self.round])
         else:
             self.current_scene = self.next_scene

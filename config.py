@@ -59,6 +59,7 @@ time_limit = 120.0
 class Round:
 
     def __init__(self, num, type, variation):
+        self.num = num
         self.type = type
         self.variation = variation
 
