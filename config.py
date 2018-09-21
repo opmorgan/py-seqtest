@@ -74,13 +74,12 @@ rounds =  [
     Round(9, 'cartoon', 'C'),
     Round(10, 'cartoon', 'D'),
 ]
-print(len(rounds)-1)
 
 bgs = {
     'green': utils.scaler(os.path.join(img_dir, 'bg.png'), display_size)
 }
 
-gameDisplay = pg.display.set_mode(display_size, pg.FULLSCREEN) # makes window
+gameDisplay = pg.display.set_mode(display_size, pg.HWSURFACE) # makes window
 
 clock = pg.time.Clock() # game clocks
 

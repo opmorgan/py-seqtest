@@ -32,9 +32,11 @@ class S(Scene):
             s = size * self.shuff[i] + margin['x']
 
             self.em.add(
-                Space(i, [x, display_height - size - margin['y']], 'pool'),
+                Space(i, [x, display_height - size - margin['y']], 
+                    'pool'),
                 Space(i, [x, margin['y']], 'target'),
-                Card(i,  [s, display_height - size - margin['y']], self.sounds, self.type, self.variation),
+                Card(i,  [s, display_height - size - margin['y']],
+                    self.sounds, self.type, self.variation),
             )
 
         self.cards = [e for e in self.em.entities if isinstance(e,Card)]
@@ -53,7 +55,8 @@ class S(Scene):
 
     def draw(self):
         for k in self.blurbs:
-            gameDisplay.blit(self.blurbs[k]['blurb'], self.blurbs[k]['rect'])
+            gameDisplay.blit(self.blurbs[k]['blurb'], 
+                    self.blurbs[k]['rect'])
         for e in self.em.entities:
             e.draw()
 
@@ -77,7 +80,6 @@ class S(Scene):
             print(key, val)
             row.append(val)
         self.sm.game.player.w.writerow(row)
-
         
         self.sm.change_scene()
 
@@ -111,6 +113,11 @@ class S(Scene):
             for card in self.cards:
                 if card.space and card.space.type == 'target': i+=1
                 else: i=0
+                
+            if i == 6: # MAKES ADVANCING POSSIBLE ONLY WHEN 6 CARDS HAVE BEEN PLACES
+                if self.sm.round == len(rounds):
+                    print('indeed, this is the last round!')
+                    self.end('GAMEOVER')
 
-            if i == 6: # COMMENT THIS BACK IN -- MAKES ADVANCING POSSIBLE ONLY WHEN 6 CARDS HAVE BEEN PLACES
-                self.end('FINISHED')
+                else:
+                    self.end('FINISHED')
