@@ -82,7 +82,7 @@ bgs = {
     'green': utils.scaler(os.path.join(img_dir, 'bg.png'), display_size)
 }
 
-gameDisplay = pg.display.set_mode(display_size, pg.HWSURFACE) # makes window
+gameDisplay = pg.display.set_mode(display_size, pg.FULLSCREEN) # makes window
 
 clock = pg.time.Clock() # game clocks
 
