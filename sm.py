@@ -1,5 +1,6 @@
 from config import *
 import os
+from threading import Timer
 
 
 
@@ -28,6 +29,7 @@ class SM:
             self.current_scene = self.scenes[0]
             self.update_scenes()
             self.current_scene.start()
+
         else:
             self.update_scenes()
             self.current_scene.em.entities = []
@@ -37,6 +39,11 @@ class SM:
     def end_scene(self):
         # def commit(round, type, vari, dur, moves, order):
         pass
+
+    def timer(self, func):
+        print('peen')
+        timer = Timer(10, func(), ())
+        time.start()
 
 
     def draw(self):

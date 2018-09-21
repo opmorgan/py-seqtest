@@ -18,5 +18,9 @@ class Scene:
             if event.type == pg.KEYDOWN:
                 if event.key==pg.K_ESCAPE:
                     pg.quit()
+
+                    if (hasattr(self, "timer")):
+                        self.timer.cancel()
+
                     exit(0)
             if cb: cb(event)

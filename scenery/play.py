@@ -1,4 +1,5 @@
 import pygame as pg
+from threading import Timer
 from datetime import datetime
 from event import Event
 from scene import Scene
@@ -8,8 +9,11 @@ from config import *
 import csv
 
 
-
 class S(Scene):
+
+    def print_test(self):
+        print("Timed out.")
+        self.end("FINISHED")
 
 
     def start(self, info):
@@ -17,6 +21,8 @@ class S(Scene):
         self.start_time = datetime.now()
         self.moves = 0
         self.font = font1
+        self.timer = Timer(time_limit, self.print_test)
+        self.timer.start()
 
         self.order = []
 
@@ -53,6 +59,8 @@ class S(Scene):
                 True, 1.8)
         }
 
+
+
     def draw(self):
         for k in self.blurbs:
             gameDisplay.blit(self.blurbs[k]['blurb'], 
@@ -68,10 +76,14 @@ class S(Scene):
         self.handle_events(self.events)
 
 
+
     def end(self, state):
         for space in self.spaces:
             if space.type == 'target':
-                self.order.append(space.card.id+1)
+                if (hasattr(space.card, "id")):
+                    self.order.append(space.card.id+1)
+                else:
+                    self.order.append(None)
 
         self.sm.game.state = state
 
@@ -80,7 +92,9 @@ class S(Scene):
             print(key, val)
             row.append(val)
         self.sm.game.player.w.writerow(row)
-        
+
+        self.timer.cancel()
+
         self.sm.change_scene()
 
     def commit(self, player):
@@ -93,7 +107,6 @@ class S(Scene):
             self.order
         )
 
-
     def events(self, event):
 
         if event.type==pg.MOUSEBUTTONDOWN:
@@ -101,6 +114,11 @@ class S(Scene):
                 if card.inhand == False:
                     if utils.mouse_chk(pg.mouse.get_pos(), card, size):
                          card.pick_up(self)
+
+                         space = next((s for s in self.spaces if (s.card == card)), None)
+                         if (hasattr(space, "card")):
+                             space.card = None
+
                          self.em.push(card)
                 else:
                     for space in self.spaces:
