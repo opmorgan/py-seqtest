@@ -57,7 +57,7 @@ class S(Scene):
                 ' the cards in a logical order above.',
                 True, 2.2),
             **make_blurb(self.font, 'inst2',
-                'Press any key when done.', 
+                'Press ENTER when done.', 
                 True, 1.8)
         }
 
@@ -87,8 +87,6 @@ class S(Scene):
                 else:
                     self.order.append(None)
 
-        print(self.sm.round)
-        print(rounds[-1].num - 1)
         if (self.sm.round == (rounds[-1].num - 1)):
             self.sm.game.state = "GAMEOVER"
         else:
@@ -96,7 +94,6 @@ class S(Scene):
 
         row = []
         for key, val in self.commit(self.sm.game.player).items():
-            print(key, val)
             row.append(val)
         self.sm.game.player.w.writerow(row)
 
@@ -117,47 +114,38 @@ class S(Scene):
     def events(self, event):
 
         if event.type == pg.MOUSEBUTTONDOWN:
-            if self.t0 != None:
-                print('self.t0 is not None and it is {}' .format(self.t0))
-                if time.time() - self.t0 > .2:
-                    print('dt after click is {}'
-                            .format(time.time() - self.t0))
+            if time.time() - self.t0 > .2:
+                for card in self.cards:
+                    if card.inhand == False:
+                        if utils.mouse_chk(pg.mouse.get_pos(), card, size):
+                             card.pick_up(self)
 
-                    for card in self.cards:
-                        if card.inhand == False:
-                            if utils.mouse_chk(pg.mouse.get_pos(), card, size):
-                                 card.pick_up(self)
+                             space = next((s for s in self.spaces if (s.card == card)), None)
+                             if (hasattr(space, "card")):
+                                 space.card = None
 
-                                 space = next((s for s in self.spaces if (s.card == card)), None)
-                                 if (hasattr(space, "card")):
-                                     space.card = None
+                             self.em.push(card)
+                    else:
+                        for space in self.spaces:
+                            if utils.mouse_chk(pg.mouse.get_pos(), space, size):
+                                card.place(space)
+                                self.moves += 1
 
-                                 self.em.push(card)
-                        else:
-                            for space in self.spaces:
-                                if utils.mouse_chk(pg.mouse.get_pos(), space, size):
-                                    card.place(space)
-                                    self.moves += 1
+                self.t0 = time.time()
 
-                    self.t0 = time.time()
-
-                    #timer.start_timer(self.toggle_cooldown)
 
         if event.type==pg.KEYDOWN:
-            print('key is down')
-            if self.t0 != None:
-                print('self.t0 is not None and it is {}' .format(self.t0))
-                print('dt is {}' 
-                        .format(time.time() - self.t0))
-                if time.time() - self.t0 > .2 :
-                    print('dt is > .2')
-                    if event.unicode == ">":
-                        i = 0
-                        for card in self.cards:
-                            if card.space and card.space.type == 'target': i+=1
-                            else: i=0 
+            if time.time() - self.t0 > .2 :
+                if event.unicode == ">":
+                    self.end('FINISHED')
+                    self.t0 = time.time()
+                elif event.key == pg.K_RETURN:
+                    i = 0
+                    for card in self.cards:
+                        if card.space and card.space.type == 'target': i+=1
+                        else: i=0 
 
+                    if i == 6:
                         self.end('FINISHED')
 
-                    #timer.start_timer(self.toggle_cooldown)
-                        self.t0 = time.time()
+                    self.t0 = time.time()
