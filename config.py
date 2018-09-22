@@ -68,14 +68,12 @@ rounds =  [
     Round(2, 'verbal', 'A'),
     Round(3, 'verbal', 'B'),
     Round(4, 'verbal', 'C'),
-    #Round(4, 'verbal', 'D'),
     Round(5, 'spatial', 'A'),
     Round(6, 'spatial', 'B'),
     Round(7, 'spatial', 'C'),
-    #Round(9, 'cartoon', 'A'),
-    Round(8, 'cartoon', 'B'),
-    Round(9, 'cartoon', 'C'),
-    Round(10, 'cartoon', 'D'),
+    Round(8, 'cartoon', 'A'),
+    Round(9, 'cartoon', 'B'),
+    Round(10, 'cartoon', 'C'),
 ]
 
 bgs = {
