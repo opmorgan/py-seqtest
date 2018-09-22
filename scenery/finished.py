@@ -35,8 +35,10 @@ class S(Scene):
         self.sm.change_scene()
 
 
-    def events(self, event):
+    def events(self, event, timer):
         if ((time.time() - self.start_time) > 0.5):
             if event.type==pg.MOUSEBUTTONDOWN:
 
                 self.end('ROUND')
+
+                timer.start_timer(self.toggle_cooldown)
