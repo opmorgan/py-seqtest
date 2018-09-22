@@ -22,7 +22,6 @@ class SM:
                 if base == name:
                     SCENE = __import__('scenery.'+ base, fromlist=['S'])
                     self.scenes.append(SCENE.S(name, self, em))
-                    print(self.scenes)
 
 
     def start_scene(self, info):
@@ -71,8 +70,6 @@ class SM:
 
 
     def change_scene(self):
-        print(self.scenes);
-        print(self.game.state, self.next_scene)
         if self.game.state == 'ROUND':
             self.current_scene = self.previous_scene
             self.start_scene(rounds[self.round])
