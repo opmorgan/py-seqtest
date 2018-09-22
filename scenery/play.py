@@ -135,10 +135,12 @@ class S(Scene):
             timer.start_timer(self.toggle_cooldown)
 
         if event.type==pg.KEYDOWN:
-            i = 0
-            for card in self.cards:
-                if card.space and card.space.type == 'target': i+=1
-                else: i=0 
+            if event.unicode == ">":
+                i = 0
+                for card in self.cards:
+                    if card.space and card.space.type == 'target': i+=1
+                    else: i=0 
 
-            self.end('FINISHED')
+                self.end('FINISHED')
 
+                timer.start_timer(self.toggle_cooldown)
