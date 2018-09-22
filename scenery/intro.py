@@ -9,6 +9,7 @@ import pygame_textinput as pg_textinput
 class S(Scene):
 
     def start(self):
+        self.sm.game.state = "INTRO"
         self.game = self.sm.game
         self.background = bgs['green']
         self.font = font1

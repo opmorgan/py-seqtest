@@ -1,16 +1,31 @@
 import pygame as pg
+import time
+from threading import Timer
 from config import *
+
+class Cooldown:
+    def __init__(self, toggle):
+        self.timer = Timer(.2, toggle);
+
+    def start_timer(self, toggle):
+        self.timer.start()
+        toggle()
 
 
 
 class Scene:
 
-
     def __init__(self, name, sm, em):
         self.em = em
         self.sm = sm
         self.sounds = self.sm.game.sounds
+        self.cooldown = False
 
+    def toggle_cooldown(self):
+        self.cooldown^=True
+
+    def cancel_timer(self):
+        self.toggle_cooldown()
 
     def handle_events(self, cb):
         for event in pg.event.get():
@@ -19,8 +34,11 @@ class Scene:
                 if event.key==pg.K_ESCAPE:
                     pg.quit()
 
-                    if (hasattr(self, "timer")):
-                        self.timer.cancel()
-
                     exit(0)
-            if cb: cb(event)
+
+            if self.cooldown is False:
+                if self.sm.game.state != "INTRO":
+                    timer = Cooldown(self.toggle_cooldown)
+                    if cb: cb(event, timer)
+                else:
+                    if cb: cb(event)

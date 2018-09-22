@@ -1,5 +1,6 @@
 import pygame as pg
 from threading import Timer
+from time import sleep
 from datetime import datetime
 from event import Event
 from scene import Scene
@@ -11,7 +12,7 @@ import csv
 
 class S(Scene):
 
-    def print_test(self):
+    def timeover(self):
         print("Timed out.")
         self.end("FINISHED")
 
@@ -21,7 +22,7 @@ class S(Scene):
         self.start_time = datetime.now()
         self.moves = 0
         self.font = font1
-        self.timer = Timer(time_limit, self.print_test)
+        self.timer = Timer(time_limit, self.timeover)
         self.timer.start()
 
         self.order = []
@@ -112,9 +113,9 @@ class S(Scene):
             self.order
         )
 
-    def events(self, event):
+    def events(self, event, timer):
 
-        if event.type==pg.MOUSEBUTTONDOWN:
+        if event.type == pg.MOUSEBUTTONDOWN:
             for card in self.cards:
                 if card.inhand == False:
                     if utils.mouse_chk(pg.mouse.get_pos(), card, size):
@@ -131,10 +132,13 @@ class S(Scene):
                             card.place(space)
                             self.moves += 1
 
+            timer.start_timer(self.toggle_cooldown)
+
         if event.type==pg.KEYDOWN:
             i = 0
             for card in self.cards:
                 if card.space and card.space.type == 'target': i+=1
-                else: i=0
-                
+                else: i=0 
+
             self.end('FINISHED')
+
