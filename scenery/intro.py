@@ -1,4 +1,3 @@
-from event import Event
 from scene import Scene
 from player import Player
 from config import *

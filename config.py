@@ -2,7 +2,14 @@ import pygame as pg
 import utils
 import tkinter as tk
 import os
+import sys
 
+# SYS VARS
+
+def resources_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(relative)
 
 
 # get screen size. 
@@ -19,7 +26,7 @@ scale_value = int((display_width - (margin['x'] * 2)) // 6)
 # set font
 # fontSize = display_height//24 # for regular fonts
 fontSize = display_height//32 # for mono fonts
-font1_path = os.path.join('resources', 'fonts', 'SourceCodePro-Regular.ttf')
+font1_path = resources_path(os.path.join("resources", "fonts", "SourceCodePro-Regular.ttf"))
 pg.font.init()
 font1 = pg.font.Font(font1_path, fontSize)
 

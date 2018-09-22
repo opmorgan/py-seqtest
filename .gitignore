@@ -2,6 +2,9 @@
 .save.cson
 __pycache__
 ../__pycache__
+build/
+dist/
+errors/
 results/*
 backups/*
 *.pyc
