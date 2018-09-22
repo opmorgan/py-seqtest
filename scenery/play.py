@@ -1,6 +1,6 @@
 import pygame as pg
 from threading import Timer
-from time import sleep
+import time
 from datetime import datetime
 from event import Event
 from scene import Scene
@@ -22,8 +22,9 @@ class S(Scene):
         self.start_time = datetime.now()
         self.moves = 0
         self.font = font1
-        self.timer = Timer(time_limit, self.timeover)
-        self.timer.start()
+        self.t0 = 2
+        #self.timer = Timer(time_limit, self.timeover)
+        #self.timer.start()
 
         self.order = []
 
@@ -99,7 +100,7 @@ class S(Scene):
             row.append(val)
         self.sm.game.player.w.writerow(row)
 
-        self.timer.cancel()
+        # self.timer.cancel()
 
         self.sm.change_scene()
 
@@ -113,34 +114,50 @@ class S(Scene):
             self.order
         )
 
-    def events(self, event, timer):
+    def events(self, event):
 
         if event.type == pg.MOUSEBUTTONDOWN:
-            for card in self.cards:
-                if card.inhand == False:
-                    if utils.mouse_chk(pg.mouse.get_pos(), card, size):
-                         card.pick_up(self)
+            if self.t0 != None:
+                print('self.t0 is not None and it is {}' .format(self.t0))
+                if time.time() - self.t0 > .2:
+                    print('dt after click is {}'
+                            .format(time.time() - self.t0))
 
-                         space = next((s for s in self.spaces if (s.card == card)), None)
-                         if (hasattr(space, "card")):
-                             space.card = None
+                    for card in self.cards:
+                        if card.inhand == False:
+                            if utils.mouse_chk(pg.mouse.get_pos(), card, size):
+                                 card.pick_up(self)
 
-                         self.em.push(card)
-                else:
-                    for space in self.spaces:
-                        if utils.mouse_chk(pg.mouse.get_pos(), space, size):
-                            card.place(space)
-                            self.moves += 1
+                                 space = next((s for s in self.spaces if (s.card == card)), None)
+                                 if (hasattr(space, "card")):
+                                     space.card = None
 
-            timer.start_timer(self.toggle_cooldown)
+                                 self.em.push(card)
+                        else:
+                            for space in self.spaces:
+                                if utils.mouse_chk(pg.mouse.get_pos(), space, size):
+                                    card.place(space)
+                                    self.moves += 1
+
+                    self.t0 = time.time()
+
+                    #timer.start_timer(self.toggle_cooldown)
 
         if event.type==pg.KEYDOWN:
-            if event.unicode == ">":
-                i = 0
-                for card in self.cards:
-                    if card.space and card.space.type == 'target': i+=1
-                    else: i=0 
+            print('key is down')
+            if self.t0 != None:
+                print('self.t0 is not None and it is {}' .format(self.t0))
+                print('dt is {}' 
+                        .format(time.time() - self.t0))
+                if time.time() - self.t0 > .2 :
+                    print('dt is > .2')
+                    if event.unicode == ">":
+                        i = 0
+                        for card in self.cards:
+                            if card.space and card.space.type == 'target': i+=1
+                            else: i=0 
 
-                self.end('FINISHED')
+                        self.end('FINISHED')
 
-                timer.start_timer(self.toggle_cooldown)
+                    #timer.start_timer(self.toggle_cooldown)
+                        self.t0 = time.time()

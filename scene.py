@@ -20,6 +20,7 @@ class Scene:
         self.sm = sm
         self.sounds = self.sm.game.sounds
         self.cooldown = False
+        
 
     def toggle_cooldown(self):
         self.cooldown^=True
@@ -36,9 +37,4 @@ class Scene:
 
                     exit(0)
 
-            if self.cooldown is False:
-                if self.sm.game.state != "INTRO":
-                    timer = Cooldown(self.toggle_cooldown)
-                    if cb: cb(event, timer)
-                else:
-                    if cb: cb(event)
+            if cb: cb(event)

@@ -34,6 +34,6 @@ class S(Scene):
         pass
 
 
-    def events(self, event, timer):
+    def events(self, event):
         if event.type==pg.MOUSEBUTTONDOWN:
             self.end('ROUND')
