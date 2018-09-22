@@ -80,7 +80,7 @@ bgs = {
     'green': utils.scaler(os.path.join(img_dir, 'bg.png'), display_size)
 }
 
-gameDisplay = pg.display.set_mode(display_size, pg.FULLSCREEN) # makes window
+gameDisplay = pg.display.set_mode(display_size) # makes window
 
 clock = pg.time.Clock() # game clocks
 
@@ -92,3 +92,8 @@ def make_blurb(font, name, text, sub, mod2):
     v_rect = v.get_rect(center=((display_width-m)/2, display_height/mod2))
 
     return { name: { 'blurb': v, 'rect': v_rect } }
+
+
+# CONFIG VARS
+
+ESCAPE_SEQUENCE = pg.K_1 and pg.K_0
