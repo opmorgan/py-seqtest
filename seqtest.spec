@@ -31,14 +31,27 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='main',
+          name='seqtest',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
           runtime_tmpdir=None,
+          icon='resources/images/seqtest.ico',
           console=True )
 
 import os
+import sys
+import shutil
+
 if not os.path.exists("./dist/results"):
   os.mkdir("./dist/results")
+
+shutil.copyfile('README.md', '{0}/README.md'.format("./dist"))
+shutil.copyfile('LICENSE', '{0}/LICENSE'.format("./dist"))
+shutil.copyfile('SOP.txt', '{0}/SOP.txt'.format("./dist"))
+
+if sys.platform == 'darwin':
+   app = BUNDLE(exe,
+                name='seqtest.app',
+                icon='resources/images/seqtest.png')
