@@ -2,7 +2,7 @@
 
 Task for evaluating sequencing ability in cerebellar ataxia. Adapted from Leggio et al., 2008.[^1]
 
-***---
+
 
 ## Installation
 
@@ -32,5 +32,5 @@ $ pyinstaller seqtest.spec
 ```
 
 
-[1]: 
+[^1]: 
 Leggio MG, Tedesco AM, Chiricozzi FR, Clausi S, Orsini A, Molinari M. Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain. 2008 Mar 11;131(5):1332-43.
