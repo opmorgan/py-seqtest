@@ -7,6 +7,5 @@ dist/
 releases/
 errors/
 results/*
-backups/*
 *.pyc
 *.pyo
