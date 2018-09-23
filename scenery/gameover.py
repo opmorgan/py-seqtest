@@ -8,17 +8,18 @@ class S(Scene):
     def start(self, info):
         self.player = self.sm.game.player
         self.background = bgs['green']
+        self.font = font1
 
-        self.gameoverfont = font1
-        self.gameoverblurb = self.gameoverfont.render('Game Over. Well Done!', True, (0, 0, 0))
-        self.gameoverblurb_rect = self.gameoverblurb.get_rect(center=(display_width/2, display_height/2.5))
+        self.blurbs = {
+            **make_blurb(self.font, 'over','Game Over. Well Done!', True, 2.5),
+            **make_blurb(self.font, 'end','Press ESCAPE to quit.', True, 2)
+        }
 
 
     def draw(self):
-        gameDisplay.blit(
-            self.gameoverblurb,
-            self.gameoverblurb_rect
-        )
+        for k in self.blurbs:
+            gameDisplay.blit(self.blurbs[k]['blurb'], self.blurbs[k]['rect'])
+
 
 
     def update(self):

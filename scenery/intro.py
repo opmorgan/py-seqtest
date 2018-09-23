@@ -11,7 +11,7 @@ class S(Scene):
         self.background = bgs['green']
         self.font = font1
         self.blurbs = {
-            **make_blurb(self.font, 'welcome','Welcome to the sequence game! Enter ID and then "Return" to begin.', True, 2.5),
+            **make_blurb(self.font, 'welcome','Welcome to the sequence game! Enter ID and then ENTER to begin.', True, 2.5),
             **make_blurb(self.font, 'prompt','Subject ID: ', False, 2)
         }
 
