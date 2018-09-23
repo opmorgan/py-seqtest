@@ -40,4 +40,5 @@ exe = EXE(pyz,
           console=True )
 
 import os
-os.mkdir("./dist/results")
+if not os.path.exists("./dist/results"):
+  os.mkdir("./dist/results")
