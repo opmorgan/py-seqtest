@@ -22,7 +22,7 @@
 
 import pygame
 import os.path
-from config import *
+from lib.config import *
 pygame.font.init()
 
 

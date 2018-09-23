@@ -1,9 +1,8 @@
 #! /usr/local/bin/python3
 
 import pygame as pg
-from game import Game
-from config import *
-
+from lib.game import Game
+# from lib.config import *
 
 
 scenes = ["intro", "play", "finished", "gameover"]

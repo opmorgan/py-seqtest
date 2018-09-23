@@ -1,13 +1,10 @@
 import pygame as pg
-from threading import Timer
 import time
 from datetime import datetime
-from event import Event
-from scene import Scene
-from card import Card
-from space import Space
-from config import *
-import csv
+from lib.scene import Scene
+from lib.card import Card
+from lib.space import Space
+from lib.config import *
 
 
 class S(Scene):

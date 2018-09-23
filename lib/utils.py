@@ -1,6 +1,6 @@
 from random import shuffle
 import pygame as pg
-from config import *
+from lib.config import *
 
 
 

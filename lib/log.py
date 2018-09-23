@@ -1,5 +1,5 @@
 import pygame as pg
-from config import *
+from lib.config import *
 # the log will have a row that that records the results of every round: (1) round number; (2) Condition (e.g., control_A_1; verbal_B_2); (3) order of cards when subject pressed "done"; (4) number of moves); (4) score
 
 # # Scoring was based on entirely correct sequences and correct

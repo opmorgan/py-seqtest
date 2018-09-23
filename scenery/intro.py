@@ -1,8 +1,6 @@
-from scene import Scene
-from player import Player
-from config import *
-import pygame as pg
-import pygame_textinput as pg_textinput
+from lib.scene import Scene
+from lib.config import *
+import lib.pygame_textinput as pg_textinput
 
 
 class S(Scene):

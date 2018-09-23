@@ -1,9 +1,7 @@
-from event import Event
-from scene import Scene
-import time  
+from lib.scene import Scene
+import time
 import pygame as pg
-from config import *
-
+from lib.config import *
 
 
 class S(Scene):

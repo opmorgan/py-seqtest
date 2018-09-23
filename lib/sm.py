@@ -1,8 +1,13 @@
-from config import *
+from lib.config import *
 import os
+import sys
 from threading import Timer
 
 
+def resource_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(relative)
 
 class SM:
 
@@ -17,7 +22,7 @@ class SM:
         self.round = 0
 
         for name in self.game.scenes:
-            for f in os.listdir('scenery'):
+            for f in os.listdir(resource_path('scenery')):
                 base = os.path.splitext(f)[0]
                 if base == name:
                     SCENE = __import__('scenery.'+ base, fromlist=['S'])

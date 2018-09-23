@@ -1,7 +1,7 @@
 import pygame as pg
-import time
 from threading import Timer
-from config import *
+from lib.config import *
+
 
 class Cooldown:
     def __init__(self, toggle):

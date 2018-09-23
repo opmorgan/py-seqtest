@@ -1,11 +1,6 @@
 import pygame as pg
-from scene import Scene
-from event import Event
-from config import *
-import csv
-import os
-
-
+from lib.scene import Scene
+from lib.config import *
 
 class S(Scene):
 

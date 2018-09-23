@@ -1,7 +1,7 @@
-from sm import SM
-from em import EM
-from player import Player
-from config import *
+from lib.sm import SM
+from lib.em import EM
+from lib.player import Player
+from lib.config import *
 
 
 
