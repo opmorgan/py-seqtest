@@ -25,12 +25,12 @@ $ pip install pygame && pip install pyinstaller
 
 ```bash
 # Run for development: 
-$ puthon main.py 
+$ python main.py 
 
 # Build binary for your system: 
 $ pyinstaller seqtest.spec 
 ```
 
 
-[^1]:
+[1]: 
 Leggio MG, Tedesco AM, Chiricozzi FR, Clausi S, Orsini A, Molinari M. Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain. 2008 Mar 11;131(5):1332-43.
