@@ -34,7 +34,7 @@ class S(Scene):
 
 
     def events(self, event):
-        if ((time.time() - self.start_time) > 0.5):
+        if ((time.time() - self.start_time) > 0.2):
             if event.type==pg.MOUSEBUTTONDOWN:
 
                 self.end('ROUND')
