@@ -31,5 +31,8 @@ $ python main.py
 $ pyinstaller seqtest.spec 
 ```
 
+## Administration
+Instructions for administration are detailed in SOP.txt.
+
 
 (1) Leggio MG, Tedesco AM, Chiricozzi FR, Clausi S, Orsini A, Molinari M. Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain. 2008 Mar 11;131(5):1332-43.
