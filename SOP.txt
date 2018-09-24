@@ -13,7 +13,7 @@ Enter the subject’s ID, which will be recorded on their results file. Wait unt
 
 (3) Explain the task
 
-Say: “This is the sequencing game. When we start, you will see six mixed up cards across the bottom of the screen. Your job is to put them in what you think is the most logical order in the six empty spaces at the top of the screen. You can move a card by clicking on it once to pick it up, and clicking again on the space where you want to place the card. Not by clicking and dragging, but by clicking once to pick up, and again to put down.  You can place a card in an empty space or one with another card; if the space is full, you will pick up the card that had been there previously. When you are satisfied that the cards are in what you think is the most logical order, press the spacebar to finish the round. Any questions?”
+Say: “This is the sequencing game. When we start, you will see six mixed up cards across the bottom of the screen. Your job is to put them in what you think is the most logical order in the six empty spaces at the top of the screen. You can move a card by clicking on it once to pick it up, and clicking again on the space where you want to place the card. Not by clicking and dragging, but by clicking once to pick up, and again to put down.  You can place a card in an empty space or one with another card; if the space is full, you will pick up the card that had been there previously. When you are satisfied that the cards are in what you think is the most logical order, press the [return] key to finish the round. Any questions?”
 
 
 (4) Start the task
@@ -25,7 +25,6 @@ Make sure that the subject presses [space] to indicate when they are done with t
 
 (5) During the task
 
-If you need to end a round early for any reason, you can force advance by pressing [shift] + [.] (the forward arrow).  
 If you need to end a round early or skip a round for any reason, you can force advance by pressing [shift] + [.] (the forward arrow).  
 Each round will time out automatically after 240 seconds. 
 In order to keep the task to a reasonable length, follow these rules for skipping rounds:
@@ -40,4 +39,4 @@ Once the subject has completed every round, a game over screen will appear. Pres
 
 (7) Results
 
-Results will be saved in the folder “seqtest/results/” as a text file named: subjectID_date_time.csv. Partial results will be saved if the experiment is aborted before all rounds have been completed. 
+Results will be saved in the folder “seqtest/results/” as a text file named: subjectID_date_time.csv. Partial results will be saved if the experiment is aborted before all rounds have been completed. If the subject timed out on a round or the round was force advnaced before all six cards were placed, no score will be recorded. 
