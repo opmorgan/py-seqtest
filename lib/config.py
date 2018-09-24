@@ -61,7 +61,7 @@ sounds = {
     }
 }
 
-time_limit = 120.0
+time_limit = 240.0
 
 class Round:
 
@@ -102,5 +102,5 @@ def make_blurb(font, name, text, sub, mod2):
 
 
 # CONFIG VARS
-
+# these may not be used
 ESCAPE_SEQUENCE = pg.K_1 and pg.K_0
