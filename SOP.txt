@@ -26,6 +26,11 @@ Make sure that the subject presses [space] to indicate when they are done with t
 (5) During the task
 
 If you need to end a round early for any reason, you can force advance by pressing [shift] + [.] (the forward arrow).  
+If you need to end a round early or skip a round for any reason, you can force advance by pressing [shift] + [.] (the forward arrow).  
+Each round will time out automatically after 240 seconds. 
+In order to keep the task to a reasonable length, follow these rules for skipping rounds:
+(a)	If the subject times out on the first two rounds of a given type (e.g., verbal), skip the third round. 
+(b)	If the subject times out on the first two rounds of the first two types (verbal and spatial), skip all rounds of the third type (cartoon). 
 
 
 (6) End the task
