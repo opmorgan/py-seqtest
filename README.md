@@ -8,7 +8,7 @@ Task for evaluating sequencing ability in cerebellar ataxia. Adapted from Leggio
 
 ### Windows / macOS / Linux
 
-Pre-compiled binaries are available for Windows, macOS, and Linux. You can download them [here].
+Pre-compiled binaries are available for Windows, macOS, and Linux. You can download them [here](https://gitlab.com/ojjo/py-seqtest/tags/v0.1.0).
 
 ### From Source
 
