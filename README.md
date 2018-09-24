@@ -1,6 +1,6 @@
 # py-seqtest
 
-Task for evaluating sequencing ability in cerebellar ataxia. Task and stimuli are adapted from Leggio et al., 2008. (1)
+Task for evaluating sequencing ability in cerebellar ataxia. Task and stimuli are adapted from Leggio et al., 2008. [1]
 
 
 
@@ -35,4 +35,4 @@ $ pyinstaller seqtest.spec
 Instructions for administration are detailed in SOP.txt.
 
 
-(1) Leggio MG, Tedesco AM, Chiricozzi FR, Clausi S, Orsini A, Molinari M. Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain. 2008 Mar 11;131(5):1332-43.
+[1]: Leggio MG, Tedesco AM, Chiricozzi FR, Clausi S, Orsini A, Molinari M. Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain. 2008 Mar 11;131(5):1332-43.
