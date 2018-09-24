@@ -1,15 +1,17 @@
 import pygame as pg
+import time
 from datetime import datetime
-from event import Event
-from scene import Scene
-from card import Card
-from space import Space
-from config import *
-import csv
-
+from lib.scene import Scene
+from lib.card import Card
+from lib.space import Space
+from lib.config import *
 
 
 class S(Scene):
+
+    def timeover(self):
+        print("Timed out.")
+        self.end("FINISHED")
 
 
     def start(self, info):
@@ -17,6 +19,9 @@ class S(Scene):
         self.start_time = datetime.now()
         self.moves = 0
         self.font = font1
+        self.t0 = 2
+        #self.timer = Timer(time_limit, self.timeover)
+        #self.timer.start()
 
         self.order = []
 
@@ -32,9 +37,11 @@ class S(Scene):
             s = size * self.shuff[i] + margin['x']
 
             self.em.add(
-                Space(i, [x, display_height - size - margin['y']], 'pool'),
+                Space(i, [x, display_height - size - margin['y']], 
+                    'pool'),
                 Space(i, [x, margin['y']], 'target'),
-                Card(i,  [s, display_height - size - margin['y']], self.sounds, self.type, self.variation),
+                Card(i,  [s, display_height - size - margin['y']],
+                    self.sounds, self.type, self.variation),
             )
 
         self.cards = [e for e in self.em.entities if isinstance(e,Card)]
@@ -47,13 +54,16 @@ class S(Scene):
                 ' the cards in a logical order above.',
                 True, 2.2),
             **make_blurb(self.font, 'inst2',
-                'Press any key when done.', 
+                'Press ENTER when done.', 
                 True, 1.8)
         }
 
+
+
     def draw(self):
         for k in self.blurbs:
-            gameDisplay.blit(self.blurbs[k]['blurb'], self.blurbs[k]['rect'])
+            gameDisplay.blit(self.blurbs[k]['blurb'], 
+                    self.blurbs[k]['rect'])
         for e in self.em.entities:
             e.draw()
 
@@ -65,20 +75,27 @@ class S(Scene):
         self.handle_events(self.events)
 
 
+
     def end(self, state):
         for space in self.spaces:
             if space.type == 'target':
-                self.order.append(space.card.id+1)
+                if (hasattr(space.card, "id")):
+                    self.order.append(space.card.id+1)
+                else:
+                    self.order.append(None)
 
-        self.sm.game.state = state
+        if (self.sm.round == (rounds[-1].num - 1)):
+            self.sm.game.state = "GAMEOVER"
+        else:
+            self.sm.game.state = state
 
         row = []
         for key, val in self.commit(self.sm.game.player).items():
-            print(key, val)
             row.append(val)
         self.sm.game.player.w.writerow(row)
 
-        
+        # self.timer.cancel()
+
         self.sm.change_scene()
 
     def commit(self, player):
@@ -91,26 +108,41 @@ class S(Scene):
             self.order
         )
 
-
     def events(self, event):
 
-        if event.type==pg.MOUSEBUTTONDOWN:
-            for card in self.cards:
-                if card.inhand == False:
-                    if utils.mouse_chk(pg.mouse.get_pos(), card, size):
-                         card.pick_up(self)
-                         self.em.push(card)
-                else:
-                    for space in self.spaces:
-                        if utils.mouse_chk(pg.mouse.get_pos(), space, size):
-                            card.place(space)
-                            self.moves += 1
+        if event.type == pg.MOUSEBUTTONDOWN:
+            if time.time() - self.t0 > .2:
+                for card in self.cards:
+                    if card.inhand == False:
+                        if utils.mouse_chk(pg.mouse.get_pos(), card, size):
+                             card.pick_up(self)
+
+                             space = next((s for s in self.spaces if (s.card == card)), None)
+                             if (hasattr(space, "card")):
+                                 space.card = None
+
+                             self.em.push(card)
+                    else:
+                        for space in self.spaces:
+                            if utils.mouse_chk(pg.mouse.get_pos(), space, size):
+                                card.place(space)
+                                self.moves += 1
+
+                self.t0 = time.time()
+
 
         if event.type==pg.KEYDOWN:
-            i = 0
-            for card in self.cards:
-                if card.space and card.space.type == 'target': i+=1
-                else: i=0
+            if time.time() - self.t0 > .2 :
+                if event.unicode == ">":
+                    self.end('FINISHED')
+                    self.t0 = time.time()
+                elif event.key == pg.K_RETURN:
+                    i = 0
+                    for card in self.cards:
+                        if card.space and card.space.type == 'target': i+=1
+                        else: i=0 
 
-            if i == 6: # COMMENT THIS BACK IN -- MAKES ADVANCING POSSIBLE ONLY WHEN 6 CARDS HAVE BEEN PLACES
-                self.end('FINISHED')
+                    if i == 6:
+                        self.end('FINISHED')
+
+                    self.t0 = time.time()

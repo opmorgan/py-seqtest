@@ -1,19 +1,17 @@
-from event import Event
-from scene import Scene
-from player import Player
-from config import *
-import pygame as pg
-import pygame_textinput as pg_textinput
+from lib.scene import Scene
+from lib.config import *
+import lib.pygame_textinput as pg_textinput
 
 
 class S(Scene):
 
     def start(self):
+        self.sm.game.state = "INTRO"
         self.game = self.sm.game
         self.background = bgs['green']
         self.font = font1
         self.blurbs = {
-            **make_blurb(self.font, 'welcome','Welcome to the sequence game! Enter ID and then "Return" to begin.', True, 2.5),
+            **make_blurb(self.font, 'welcome','Welcome to the sequence game! Enter ID and then ENTER to begin.', True, 2.5),
             **make_blurb(self.font, 'prompt','Subject ID: ', False, 2)
         }
 

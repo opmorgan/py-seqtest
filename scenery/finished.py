@@ -1,15 +1,14 @@
-from event import Event
-from scene import Scene
+from lib.scene import Scene
+import time
 import pygame as pg
-from config import *
-
+from lib.config import *
 
 
 class S(Scene):
 
-
     def start(self, info):
         self.sounds["done"].play()
+        self.start_time = time.time()
 
         self.background = bgs['green']
         self.welcomefont = font1
@@ -35,6 +34,9 @@ class S(Scene):
 
 
     def events(self, event):
-        if event.type==pg.MOUSEBUTTONDOWN:
+        if ((time.time() - self.start_time) > 0.2):
+            if event.type==pg.MOUSEBUTTONDOWN:
 
-            self.end('ROUND')
+                self.end('ROUND')
+
+                #timer.start_timer(self.toggle_cooldown)

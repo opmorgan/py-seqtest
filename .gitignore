@@ -2,5 +2,10 @@
 .save.cson
 __pycache__
 ../__pycache__
+build/
+dist/
+releases/
+errors/
+results/*
 *.pyc
 *.pyo
