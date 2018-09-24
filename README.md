@@ -8,7 +8,7 @@ Task for evaluating sequencing ability in cerebellar ataxia. Task and stimuli ar
 
 ### Windows / macOS / Linux
 
-Pre-compiled binaries are available for Windows, macOS, and Linux. You can download them [here](https://gitlab.com/ojjo/py-seqtest/tags/v0.1.0).
+Pre-compiled binaries are available for Windows, macOS, and Linux. You can download them [here](https://gitlab.com/ojjo/py-seqtest/tags/v0.1.1).
 
 ### From Source
 
