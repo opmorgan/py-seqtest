@@ -136,7 +136,7 @@ class TextInput:
                                                     self.keyrepeat_interval_ms
 
                 event_key, event_unicode = key, self.keyrepeat_counters[key][1]
-                pygame.event.post(pygame.event.Event(pl.KEYDOWN, key=event_key, unicode=event_unicode))
+                pygame.event.post(pygame.event.Event(pygame.KEYDOWN, key=event_key, unicode=event_unicode))
 
         # Rerender text surface:
         self.surface = self.font_object.render(self.input_string, self.antialias, self.text_color)
