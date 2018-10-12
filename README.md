@@ -8,7 +8,7 @@ Task for evaluating sequencing ability in cerebellar ataxia. Task and stimuli ar
 
 ### Windows 
 
-Pre-compiled binaries are available for Windows. You can download them [here](https://gitlab.com/ojjo/py-seqtest/tags/v0.1.1).
+Pre-compiled binaries are available for Windows. You can download them [here](https://gitlab.com/ojjo/py-seqtest/tags/v0.1.2).
 
 ### From Source
 
@@ -32,7 +32,7 @@ $ pyinstaller seqtest.spec
 ```
 
 ## Administration
-Instructions for administration are detailed in SOP.txt.
+Instructions for administration are detailed in SOP.pdf.
 
 
 [1]: Leggio MG, Tedesco AM, Chiricozzi FR, Clausi S, Orsini A, Molinari M. Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain. 2008 Mar 11;131(5):1332-43.
