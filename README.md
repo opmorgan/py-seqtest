@@ -34,6 +34,7 @@ $ pyinstaller seqtest.spec
 ## Administration
 Instructions for administration are detailed in SOP.pdf.
 
-[1]: Morgan, O. P., Slapik, M. B., Iannuzzelli, K. G., LaConte, S. M., Lisinski, J. M., Nopoulos, P. C., Cochran, A. M., Kronemer, S. I., Rosenthal, L. S., & Marvel, C. L. (2021). The cerebellum and implicit sequencing: Evidence from cerebellar ataxia. The Cerebellum, 20(2), 222–245. https://doi.org/10.1007/s12311-020-01206-7
+## References
+[1] Morgan, O. P., Slapik, M. B., Iannuzzelli, K. G., LaConte, S. M., Lisinski, J. M., Nopoulos, P. C., Cochran, A. M., Kronemer, S. I., Rosenthal, L. S., & Marvel, C. L. (2021). The cerebellum and implicit sequencing: Evidence from cerebellar ataxia. The Cerebellum, 20(2), 222–245. https://doi.org/10.1007/s12311-020-01206-7
 
-[2]: Leggio MG, Tedesco AM, Chiricozzi FR, Clausi S, Orsini A, Molinari M. Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain. 2008 Mar 11;131(5):1332-43.
+[2] Leggio, M. G., Tedesco, A. M., Chiricozzi, F. R., Clausi, S., Orsini, A., & Molinari, M. (2008). Cognitive sequencing impairment in patients with focal or atrophic cerebellar damage. Brain, 131(5), 1332–1343. https://doi.org/10.1093/brain/awn040
