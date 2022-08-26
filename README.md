@@ -2,7 +2,7 @@
 
 Task for evaluating cognitive sequencing ability in cerebellar ataxia, used in Morgan et al. (2021)[^1]. Task and stimuli are adapted from Leggio et al. (2008)[^2].
 
-
+Analysies scripts, including data and analyses reported in Morgan et al. (2021), are available in the repo [seqtest-analysis](https://github.com/opmorgan/seqtest-analysis)
 
 ## Installation
 
