@@ -1,6 +1,6 @@
 # py-seqtest
 
-Task for evaluating sequencing ability in cerebellar ataxia, used in Morgan et al. (2021) [^1]. Task and stimuli are adapted from Leggio et al. (2008) [^2].
+Task for evaluating sequencing ability in cerebellar ataxia, used in Morgan et al. (2021)[^1]. Task and stimuli are adapted from Leggio et al. (2008)[^2].
 
 
 
